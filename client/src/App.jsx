@@ -15,6 +15,7 @@ const App = () => {
             <Route path='/' element={<ChatBox />} />
             <Route path='/credits' element={<Credits />} />
             <Route path='/community' element={<Community />} />
+            <Route path="*" element={<h1>404 - Not Found</h1>} />
           </Routes>
         </div>
       </div>
