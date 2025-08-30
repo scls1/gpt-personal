@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
+import moment from 'moment'
 
-const Sidebar = () => {
+const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
   
-  const { chats, selectedChat, theme, setTheme, user, navigate } = useAppContext()
+  const { chats, setSelectedChat, theme, setTheme, user, navigate } = useAppContext()
   const [search, setSearch] = useState('');
     
   return (
-    <div className='flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border-r border-[#80609F]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1'>
+    <div className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border-r border-[#80609F]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && 'max-md:-translate-x-full'}`}>
       {/* Logo*/}
-      <img src={theme === 'dark' ? assets.logo_full : assets.logo_full_dark} alt="Logo"  className='w-full max-w-48'/>
+      <img src={theme === 'dark' ? assets.logo_personal : assets.logo_personal_dark} alt="Logo"  className='w-full max-w-48'/>
 
       {/* New Chat Button*/}
       <button className='flex justify-center items-center w-full py-2 mt-10 text-white bg-gradient-to-r from-[#A456F7] to-[#3D81F6] text-sm rounded-md cursor-pointer'>
@@ -34,7 +35,7 @@ const Sidebar = () => {
               : chat.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((chat) => (
-            <div
+            <div onClick={()=>{navigate('/'); setSelectedChat(chat); setIsMenuOpen(false)}}
               key={chat._id}
               className="p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300 dark:border-[#80609F]/15 rounded-md cursor-pointer flex justify-between group"
             >
@@ -45,7 +46,7 @@ const Sidebar = () => {
                     : chat.name}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-[#B1A6C0]">
-                  {chat.updatedAt}
+                  {moment(chat.updatedAt).fromNow()}
                 </p>
               </div>
               <img
@@ -60,7 +61,7 @@ const Sidebar = () => {
 
 
       {/* Community images */}
-      <div onClick={()=>{navigate('/community')}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      <div onClick={()=>{navigate('/community'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
 
         <img src={assets.gallery_icon} className='w-4.5 not-dark:invert' alt=""/>
         <div className='flex flex-col text-sm'>
@@ -70,7 +71,7 @@ const Sidebar = () => {
       </div>
 
       {/* Credits Purchase Option */}
-      <div onClick={()=>{navigate('/credits')}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      <div onClick={()=>{navigate('/credits'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
 
         <img src={assets.diamond_icon} className='w-4.5 dark:invert' alt=""/>
         <div className='flex flex-col text-sm'>
@@ -101,7 +102,7 @@ const Sidebar = () => {
         {user && <img src={assets.logout_icon} className='h-5 cursor-pointer hidden not-dark:invert group-hover:block' alt=""/>}
       </div>
 
-      <img src={assets.close_icon} alt="" className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert'/>
+      <img onClick={()=>setIsMenuOpen(false)} src={assets.close_icon} alt="" className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert'/>
 
     </div>
   )
