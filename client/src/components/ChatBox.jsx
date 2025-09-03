@@ -30,7 +30,7 @@ const ChatBox = () => {
     
       {/* Prompt Input Box */}
       <form>
-        
+        <input type="text" placeholder='Type your message here...' className='w-full p-4 rounded-lg bg-gray-200 dark:bg-gray-700 text-black dark:text-white focus:outline-none' />  
       </form>
     </div>
   )
