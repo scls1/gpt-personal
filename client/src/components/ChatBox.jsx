@@ -34,6 +34,7 @@ const ChatBox = () => {
       {/* Prompt Input Box */}
       <form>
         <input type="text" placeholder='Type your message...' className='w-full p-4 rounded-md bg-slate-50 dark:bg-[#57317C]/30 border border-[#80609F]/30 text-sm dark:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent' />
+        <button type='submit' className='hidden'>Send</button>
       </form>
     </div>
   )
