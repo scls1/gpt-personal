@@ -61,17 +61,17 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
 
 
       {/* Community images */}
-      <div onClick={()=>{navigate('/community'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      {/* <div onClick={()=>{navigate('/community'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
 
         <img src={assets.gallery_icon} className='w-4.5 not-dark:invert' alt=""/>
         <div className='flex flex-col text-sm'>
           <p>Community Images</p>
         </div>
       
-      </div>
+      </div> */}
 
       {/* Credits Purchase Option */}
-      <div onClick={()=>{navigate('/credits'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      {/* <div onClick={()=>{navigate('/credits'); setIsMenuOpen(false)}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
 
         <img src={assets.diamond_icon} className='w-4.5 dark:invert' alt=""/>
         <div className='flex flex-col text-sm'>
@@ -79,7 +79,7 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
           <p>Purchase credits to use PersonalGPT</p>
         </div>
       
-      </div>
+      </div> */}
 
       {/* Dark Mode Toggle */}
       <div className='flex items-center justify-between gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md'>
