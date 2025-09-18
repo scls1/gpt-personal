@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 
@@ -38,7 +38,7 @@ export const registerUser = async (req, res) => {
 }
 
 // API to login user
-export const LoginUser = async (req,res) => {
+export const loginUser = async (req,res) => {
     const { email, password } = req.body;
 
     try{
